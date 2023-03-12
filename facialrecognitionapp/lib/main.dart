@@ -2,6 +2,7 @@ import 'package:facialrecognitionapp/model/photomemo.dart';
 import 'package:facialrecognitionapp/viewscreen/create_account_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/detailview_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/startdispatcher.dart';
+import 'package:facialrecognitionapp/viewscreen/view/changepassword_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/createphotomemo_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/error_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,6 +38,8 @@ class QuanternateApp extends StatelessWidget {
             return DetailViewScreen(photoMemo: photoMemo);
           }
         },
+        ChangePasswordScreen.routeName: (context) =>
+            const ChangePasswordScreen(),
       },
     );
   }

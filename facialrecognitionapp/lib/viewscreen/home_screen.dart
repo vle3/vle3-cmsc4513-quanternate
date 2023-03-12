@@ -2,6 +2,7 @@ import 'package:facialrecognitionapp/controller/firestore_controller.dart';
 import 'package:facialrecognitionapp/controller/storage_controller.dart';
 import 'package:facialrecognitionapp/model/constants.dart';
 import 'package:facialrecognitionapp/viewscreen/detailview_screen.dart';
+import 'package:facialrecognitionapp/viewscreen/view/changepassword_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/createphotomemo_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/view_util.dart';
 import 'package:facialrecognitionapp/viewscreen/view/webimage.dart';
@@ -148,7 +149,9 @@ class _Controller {
   _HomeState state;
   _Controller(this.state);
 
-  void changePassword() {}
+  void changePassword() {
+    Navigator.pushNamed(state.context, ChangePasswordScreen.routeName);
+  }
 
   void addButton() async {
     final memo = await Navigator.pushNamed(
