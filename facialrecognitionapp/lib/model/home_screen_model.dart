@@ -1,8 +1,9 @@
+import 'package:facialrecognitionapp/model/photomemo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreenModel {
   User user;
-  //List<PhotoMemo>? photoMemoList;
+  List<PhotoMemo>? photoMemoList;
   String? loadingErrorMessage;
   int? deleteIndex;
   bool deleteInProgress = false;
