@@ -4,6 +4,7 @@ import 'package:facialrecognitionapp/model/constants.dart';
 import 'package:facialrecognitionapp/viewscreen/detailview_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/changepassword_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/createphotomemo_screen.dart';
+import 'package:facialrecognitionapp/viewscreen/view/editprofile_screen.dart';
 import 'package:facialrecognitionapp/viewscreen/view/view_util.dart';
 import 'package:facialrecognitionapp/viewscreen/view/webimage.dart';
 import 'package:flutter/material.dart';
@@ -130,6 +131,11 @@ class _HomeState extends State<HomeScreen> {
             ),
           ),
           ListTile(
+            leading: const Icon(Icons.edit),
+            title: const Text('Edit Profile'),
+            onTap: con.editProfile,
+          ),
+          ListTile(
             leading: const Icon(Icons.people),
             title: const Text('Change Password'),
             onTap: con.changePassword,
@@ -148,6 +154,10 @@ class _HomeState extends State<HomeScreen> {
 class _Controller {
   _HomeState state;
   _Controller(this.state);
+
+  void editProfile() {
+    Navigator.pushNamed(state.context, EditProfileScreen.routeName);
+  }
 
   void changePassword() {
     Navigator.pushNamed(state.context, ChangePasswordScreen.routeName);
