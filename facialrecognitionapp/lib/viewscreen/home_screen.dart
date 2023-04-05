@@ -136,6 +136,11 @@ class _HomeState extends State<HomeScreen> {
             onTap: con.editProfile,
           ),
           ListTile(
+            leading: const Icon(Icons.remove_red_eye_outlined),
+            title: const Text('Last Time Seen: 10/01/2000'),
+            onTap: () {},
+          ),
+          ListTile(
             leading: const Icon(Icons.people),
             title: const Text('Change Password'),
             onTap: con.changePassword,
