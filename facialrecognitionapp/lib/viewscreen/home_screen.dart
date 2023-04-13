@@ -104,8 +104,9 @@ class _HomeState extends State<HomeScreen> {
                       ? '${photoMemo.memo.substring(0, 40)} ...'
                       : photoMemo.memo,
                 ),
-                Text('Created by: ${photoMemo.createdBy}'),
-                Text('Date added: ${photoMemo.timestamp}'),
+                //Text('Created by: ${photoMemo.createdBy}'),
+                //Text('Date added: ${photoMemo.timestamp}'),
+                Text('Last seen: ${photoMemo.lastseen}'),
               ],
             ),
             onTap: () => con.onTap(index),
@@ -134,11 +135,6 @@ class _HomeState extends State<HomeScreen> {
             leading: const Icon(Icons.edit),
             title: const Text('Edit Profile'),
             onTap: con.editProfile,
-          ),
-          ListTile(
-            leading: const Icon(Icons.remove_red_eye_outlined),
-            title: const Text('Last Time Seen: 10/01/2000'),
-            onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.people),

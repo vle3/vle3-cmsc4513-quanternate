@@ -44,8 +44,9 @@ class _DetailViewState extends State<DetailViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '${screenModel.user.email}: Detail View',
+        title: Align(
+          alignment: Alignment.center,
+          child: Text(screenModel.photoMemo.title),
         ),
         actions: [
           screenModel.editMode
@@ -88,11 +89,22 @@ class _DetailViewState extends State<DetailViewScreen> {
                   decoration: const InputDecoration(
                     hintText: 'Enter memo',
                   ),
-                  initialValue: 'Enter Memo',
                   keyboardType: TextInputType.multiline,
-                  maxLines: 6,
+                  maxLines: 1,
                   validator: PhotoMemo.validateMemo,
                   onSaved: screenModel.saveMemo,
+                ),
+                Text(
+                  'Created By: ${screenModel.photoMemo.createdBy}',
+                  //style: Theme.of(context).textTheme.headline6,
+                ),
+                Text(
+                  'Date Added: ${screenModel.photoMemo.timestamp.toString()}',
+                  //style: Theme.of(context).textTheme.headline6,
+                ),
+                Text(
+                  'Last Seen: ${screenModel.photoMemo.lastseen}',
+                  //style: Theme.of(context).textTheme.headline6,
                 ),
               ],
             ),

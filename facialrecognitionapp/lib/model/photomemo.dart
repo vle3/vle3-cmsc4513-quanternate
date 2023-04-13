@@ -10,6 +10,7 @@ enum DocKeyPhotoMemo {
   photoFileName,
   photoURL,
   timestamp,
+  lastseen,
 }
 
 class PhotoMemo {
@@ -19,6 +20,7 @@ class PhotoMemo {
   String memo;
   String photoFilename; // image / photo to store Storage
   String photoURL; // URL of the image
+  String? lastseen;
   DateTime? timestamp;
 
   PhotoMemo({
@@ -29,6 +31,7 @@ class PhotoMemo {
     required this.photoFilename,
     required this.photoURL,
     this.timestamp,
+    this.lastseen,
   }) {}
 
   PhotoMemo clone() {
@@ -40,6 +43,7 @@ class PhotoMemo {
       photoFilename: photoFilename,
       photoURL: photoURL,
       timestamp: timestamp,
+      lastseen: lastseen,
     );
     return copy;
   }
@@ -52,6 +56,7 @@ class PhotoMemo {
     photoFilename = p.photoFilename;
     photoURL = p.photoURL;
     timestamp = p.timestamp;
+    lastseen = p.lastseen;
   }
 
   Map<String, dynamic> toFireStoreDoc() {
@@ -62,6 +67,7 @@ class PhotoMemo {
       DocKeyPhotoMemo.photoFileName.name: photoFilename,
       DocKeyPhotoMemo.photoURL.name: photoURL,
       DocKeyPhotoMemo.timestamp.name: timestamp,
+      DocKeyPhotoMemo.lastseen.name: lastseen,
     };
   }
 
@@ -71,18 +77,18 @@ class PhotoMemo {
     required String docId,
   }) {
     return PhotoMemo(
-      docId: docId,
-      createdBy: doc[DocKeyPhotoMemo.createdBy.name] ??= '',
-      title: doc[DocKeyPhotoMemo.title.name] ??= '',
-      memo: doc[DocKeyPhotoMemo.memo.name] ??= '',
-      photoFilename: doc[DocKeyPhotoMemo.photoFileName.name] ??= '',
-      photoURL: doc[DocKeyPhotoMemo.photoURL.name] ??= '',
-      timestamp: doc[DocKeyPhotoMemo.timestamp.name] != null
-          ? DateTime.fromMillisecondsSinceEpoch(
-              doc[DocKeyPhotoMemo.timestamp.name].millisecondsSinceEpoch,
-            )
-          : null,
-    );
+        docId: docId,
+        createdBy: doc[DocKeyPhotoMemo.createdBy.name] ??= '',
+        title: doc[DocKeyPhotoMemo.title.name] ??= '',
+        memo: doc[DocKeyPhotoMemo.memo.name] ??= '',
+        photoFilename: doc[DocKeyPhotoMemo.photoFileName.name] ??= '',
+        photoURL: doc[DocKeyPhotoMemo.photoURL.name] ??= '',
+        timestamp: doc[DocKeyPhotoMemo.timestamp.name] != null
+            ? DateTime.fromMillisecondsSinceEpoch(
+                doc[DocKeyPhotoMemo.timestamp.name].millisecondsSinceEpoch,
+              )
+            : null,
+        lastseen: doc['Time_seen'] ??= '');
   }
 
   bool isValid() {
