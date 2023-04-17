@@ -46,6 +46,9 @@ class _HomeState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text('Home: ${screenModel.user.email}'),
           actions: [
+            IconButton(
+                onPressed: (con.loadPhotoMemoList),
+                icon: const Icon(Icons.refresh)),
             if (screenModel.deleteIndex != null)
               IconButton(
                 onPressed: con.delete,
