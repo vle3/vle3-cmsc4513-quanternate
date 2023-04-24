@@ -24,4 +24,10 @@ class Auth {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
   }
+
+  static Future<void> updatePassword({
+    required String newPassword,
+  }) async {
+    await user!.updatePassword(newPassword);
+  }
 }

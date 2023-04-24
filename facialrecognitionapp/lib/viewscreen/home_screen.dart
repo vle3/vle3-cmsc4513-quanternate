@@ -47,7 +47,10 @@ class _HomeState extends State<HomeScreen> {
           title: Text('Home: ${screenModel.user.email}'),
           actions: [
             IconButton(
-                onPressed: (con.loadPhotoMemoList),
+                onPressed: () => {
+                      con.loadPhotoMemoList,
+                      render(() => {screenModel.deleteIndex = null})
+                    },
                 icon: const Icon(Icons.refresh)),
             if (screenModel.deleteIndex != null)
               IconButton(
@@ -78,6 +81,8 @@ class _HomeState extends State<HomeScreen> {
     }
   }
 
+  var borderRadius = const BorderRadius.only(
+      topRight: Radius.circular(32), bottomRight: Radius.circular(32));
   Widget showPhotoMemoList() {
     if (screenModel.photoMemoList!.isEmpty) {
       return Text('No PhotoMemo found!',
@@ -88,6 +93,8 @@ class _HomeState extends State<HomeScreen> {
         itemBuilder: ((context, index) {
           PhotoMemo photoMemo = screenModel.photoMemoList![index];
           return ListTile(
+            shape: RoundedRectangleBorder(borderRadius: borderRadius),
+            tileColor: Colors.blue[200],
             selected: screenModel.deleteIndex == index,
             selectedTileColor: Colors.redAccent[100],
             leading:
@@ -102,14 +109,16 @@ class _HomeState extends State<HomeScreen> {
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  photoMemo.memo.length >= 40
-                      ? '${photoMemo.memo.substring(0, 40)} ...'
-                      : photoMemo.memo,
-                ),
+                // Text(
+                //   photoMemo.memo.length >= 40
+                //       ? '${photoMemo.memo.substring(0, 40)} ...'
+                //       : photoMemo.memo,
+                // ),
                 //Text('Created by: ${photoMemo.createdBy}'),
                 //Text('Date added: ${photoMemo.timestamp}'),
-                Text('Last seen: ${photoMemo.lastseen}'),
+                Text(photoMemo.lastseen == null || photoMemo.lastseen == ''
+                    ? 'Last seen: ${photoMemo.timestamp}'
+                    : 'Last seen: ${photoMemo.lastseen}'),
               ],
             ),
             onTap: () => con.onTap(index),
